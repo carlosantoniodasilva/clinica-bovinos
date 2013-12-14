@@ -1,0 +1,27 @@
+<div class="page-header">
+  <span class="pull-right hidden-print">
+    <%= link_to_function 'Imprimir', 'print();', class: 'btn btn-primary' %>
+    <%= link_to 'Voltar', relatorios_inseminacoes_realizadas_path, class: 'btn btn-default' %>
+  </span>
+  <h1>
+    Inseminações: <%= @bovino.nome %>
+  </h1>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Inseminador</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inseminacoes.each do |inseminacao| %>
+      <tr>
+        <td><%= l inseminacao.data %></td>
+        <td><%= inseminacao.inseminador.nome %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,15 @@
+<div class="page-header">
+  <h1>
+    Inseminações Realizadas
+  </h1>
+</div>
+
+<%= form_tag do %>
+  <div class="form-group">
+    <%= label_tag :bovino_id, '* Selecione um Bovino' %>
+    <%= select_tag :bovino_id, options_for_select(Bovino.femea.order(:nome).map { |b| [b.nome, b.id] }.unshift([])), class: 'form-control' %>
+  </div>
+
+  <%= submit_tag 'Visualizar', class: 'btn btn-primary' %>
+  <%= link_to 'Cancelar', root_path, class: 'btn btn-default' %>
+<% end %>

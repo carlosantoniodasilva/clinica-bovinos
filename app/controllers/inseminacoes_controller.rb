@@ -4,7 +4,7 @@ class InseminacoesController < ApplicationController
 
   # GET /inseminacoes
   def index
-    @inseminacoes = Inseminacao.includes(:inseminador, :bovino)
+    @inseminacoes = Inseminacao.includes(:inseminador, :bovino).order('data desc, bovinos.nome asc')
   end
 
   # GET /inseminacoes/new

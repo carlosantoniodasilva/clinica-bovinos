@@ -8,9 +8,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>Bovino</th>
       <th>Data</th>
       <th>Inseminador</th>
-      <th>Bovino</th>
       <th class="col-xs-3"></th>
     </tr>
   </thead>
@@ -18,9 +18,9 @@
   <tbody>
     <% @inseminacoes.each do |inseminacao| %>
       <tr>
+        <td><%= inseminacao.bovino.nome %></td>
         <td><%= l inseminacao.data %></td>
         <td><%= inseminacao.inseminador.nome %></td>
-        <td><%= inseminacao.bovino.nome %></td>
         <td>
           <%= link_to 'Editar', edit_inseminacao_path(inseminacao) %> |
           <%= link_to 'Remover', inseminacao, method: :delete, data: { confirm: 'Tem certeza?' } %>

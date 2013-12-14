@@ -1,0 +1,2 @@
+module Relatorios::InseminacoesRelizadasHelper
+end
