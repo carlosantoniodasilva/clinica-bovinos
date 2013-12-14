@@ -41,6 +41,12 @@
                 <%= content_tag :li, role: 'presentation', class: ('active' if @menu_ativo == :rebanhos) do %>
                   <%= link_to 'Rebanhos', rebanhos_path, tabindex: '-1', role: 'menuitem' %>
                 <% end %>
+                <%= content_tag :li, role: 'presentation', class: ('active' if @menu_ativo == :inseminadores) do %>
+                  <%= link_to 'Inseminadores', inseminadores_path, tabindex: '-1', role: 'menuitem' %>
+                <% end %>
+                <%= content_tag :li, role: 'presentation', class: ('active' if @menu_ativo == :inseminacoes) do %>
+                  <%= link_to 'Inseminações', inseminacoes_path, tabindex: '-1', role: 'menuitem' %>
+                <% end %>
               </ul>
             </li>
             <li class="dropdown<%= 'active' if @painel_ativo == :relatorios %>">
@@ -73,6 +79,8 @@
                     <%= link_to 'Fazendas', fazendas_path, class: ['list-group-item', ('active' if @menu_ativo == :fazendas)] %>
                     <%= link_to 'Bovinos', bovinos_path, class: ['list-group-item', ('active' if @menu_ativo == :bovinos)] %>
                     <%= link_to 'Rebanhos', rebanhos_path, class: ['list-group-item', ('active' if @menu_ativo == :rebanhos)] %>
+                    <%= link_to 'Inseminadores', inseminadores_path, class: ['list-group-item', ('active' if @menu_ativo == :inseminadores)] %>
+                    <%= link_to 'Inseminações', inseminacoes_path, class: ['list-group-item', ('active' if @menu_ativo == :inseminacoes)] %>
                   </div>
                 </div>
               </div>

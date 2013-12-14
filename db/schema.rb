@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131214211051) do
+ActiveRecord::Schema.define(version: 20131214220058) do
 
   create_table "bovinos", force: true do |t|
     t.integer  "fazenda_id"
@@ -33,6 +33,23 @@ ActiveRecord::Schema.define(version: 20131214211051) do
   end
 
   create_table "fazendas", force: true do |t|
+    t.string   "nome"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inseminacoes", force: true do |t|
+    t.integer  "bovino_id"
+    t.integer  "inseminador_id"
+    t.date     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "inseminacoes", ["bovino_id"], name: "index_inseminacoes_on_bovino_id"
+  add_index "inseminacoes", ["inseminador_id"], name: "index_inseminacoes_on_inseminador_id"
+
+  create_table "inseminadores", force: true do |t|
     t.string   "nome"
     t.datetime "created_at"
     t.datetime "updated_at"

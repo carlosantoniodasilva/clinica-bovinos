@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h1>
+    Lista de Inseminadores
+    <%= link_to 'Novo Inseminador', new_inseminador_path, class: 'btn btn-primary pull-right' %>
+  </h1>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th class="col-xs-3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inseminadores.each do |inseminador| %>
+      <tr>
+        <td><%= inseminador.nome %></td>
+        <td>
+          <%= link_to 'Editar', edit_inseminador_path(inseminador) %> |
+          <%= link_to 'Remover', inseminador, method: :delete, data: { confirm: 'Tem certeza?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

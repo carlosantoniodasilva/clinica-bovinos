@@ -35,11 +35,13 @@ class Bovino < ActiveRecord::Base
     'Tabapuã'
   ]
 
-  SEXOS = %w(Macho Fêmea)
+  SEXOS = %w(Macho Fêmea).each do |sexo|
+    scope sexo.parameterize, -> { where sexo: sexo }
+  end
 
   belongs_to :fazenda
 
-  validates_presence_of :fazenda, :numero, :nome, :pelagem, :raca, :sexo, :data_nascimento
+  validates_presence_of :fazenda_id, :numero, :nome, :pelagem, :raca, :sexo, :data_nascimento
   validates_inclusion_of :pelagem, in: PELAGENS, allow_blank: true
   validates_inclusion_of :raca, in: RACAS, allow_blank: true
   validates_inclusion_of :sexo, in: SEXOS, allow_blank: true

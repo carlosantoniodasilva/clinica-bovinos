@@ -1,0 +1,34 @@
+<%= form_for(@inseminacao) do |f| %>
+  <% if @inseminacao.errors.any? %>
+    <div id="error_explanation" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@inseminacao.errors.count, 'erro não permitiu', 'errors não permitiram') %> salvar a inseminacao:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @inseminacao.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :bovino_id, '* Bovino' %>
+    <%= f.collection_select :bovino_id, Bovino.femea.order(:nome), :id, :nome, { prompt: true }, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :data, '* Data' %>
+    <%= f.date_field :data, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :inseminador_id, '* Inseminador' %>
+    <%= f.collection_select :inseminador_id, Inseminador.order(:nome), :id, :nome, { prompt: true }, class: 'form-control' %>
+  </div>
+
+  <%= f.submit class: 'btn btn-primary' %>
+  <%= link_to 'Cancelar', inseminacoes_path, class: 'btn btn-default' %>
+<% end %>

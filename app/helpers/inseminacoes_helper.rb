@@ -1,0 +1,2 @@
+module InseminacoesHelper
+end

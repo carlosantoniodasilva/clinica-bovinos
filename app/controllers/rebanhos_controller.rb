@@ -1,5 +1,5 @@
 class RebanhosController < ApplicationController
-  before_action :set_rebanho, only: [:show, :edit, :update, :destroy]
+  before_action :set_rebanho, only: [:edit, :update, :destroy]
   before_action :set_menu
 
   # GET /rebanhos
