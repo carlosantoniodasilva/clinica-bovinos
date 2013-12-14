@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    attributes:
+      bovino:
+        numero: Número
+        mae: Mãe
+        raca: Raça
+        data_nascimento: Data de Nascimento

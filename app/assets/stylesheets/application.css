@@ -9,5 +9,15 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require bootstrap
  *= require_tree .
  */
+
+body {
+  padding-top: 70px;
+}
+
+.main > .page-header,
+.main > .page-header h1 {
+  margin-top: 0;
+}

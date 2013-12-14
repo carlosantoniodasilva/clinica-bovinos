@@ -1,0 +1,24 @@
+<%= form_for(@fazenda) do |f| %>
+  <% if @fazenda.errors.any? %>
+    <div id="error_explanation" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@fazenda.errors.count, 'erro não permitiu', 'errors não permitiram') %> salvar a fazenda:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @fazenda.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :nome, '* Nome' %>
+    <%= f.text_field :nome, class: 'form-control' %>
+  </div>
+
+  <%= f.submit class: 'btn btn-primary' %>
+  <%= link_to 'Cancelar', bovinos_path, class: 'btn btn-default' %>
+<% end %>

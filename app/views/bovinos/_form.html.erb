@@ -1,0 +1,68 @@
+<%= form_for(@bovino) do |f| %>
+  <% if @bovino.errors.any? %>
+    <div id="error_explanation" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@bovino.errors.count, 'erro não permitiu', 'errors não permitiram') %> salvar o bovino:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @bovino.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :fazenda_id, '* Fazenda' %>
+    <%= f.collection_select :fazenda_id, Fazenda.order(:nome), :id, :nome, { prompt: true }, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :numero, '* Número' %>
+    <%= f.text_field :numero, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :nome, '* Nome' %>
+    <%= f.text_field :nome, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :pai %>
+    <%= f.text_field :pai, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :mae %>
+    <%= f.text_field :mae, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :raca, '* Raça' %>
+    <%= f.select :raca, Bovino::RACAS, { prompt: true }, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :pelagem, '* Pelagem' %>
+    <%= f.select :pelagem, Bovino::PELAGENS, { prompt: true }, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <strong>* Sexo:</strong>
+    <% Bovino::SEXOS.each do |sexo| %>
+      <label class="radio-inline">
+        <%= f.radio_button :sexo, sexo %> <%= sexo %>
+      </label>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :data_nascimento, '* Data de Nascimento' %>
+    <%= f.date_field :data_nascimento, class: 'form-control' %>
+  </div>
+
+  <%= f.submit class: 'btn btn-primary' %>
+  <%= link_to 'Cancelar', bovinos_path, class: 'btn btn-default' %>
+<% end %>
