@@ -1,0 +1,45 @@
+<h3>
+  Bovinos (<%= rebanho.bovinos.size %>)
+  <%= link_to 'Adicionar', rebanho_bovinos_path(rebanho), class: 'btn btn-primary pull-right' %>
+</h3>
+
+<hr>
+
+<% if rebanho.bovinos.present? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Número</th>
+        <th>Nome</th>
+        <th>Raça</th>
+        <th>Pelagem</th>
+        <th>Sexo</th>
+        <th>Nascimento</th>
+        <th class="col-xs-2"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% rebanho.bovinos.each do |bovino| %>
+        <tr>
+          <td><%= bovino.numero %></td>
+          <td><%= bovino.nome %></td>
+          <td><%= bovino.raca %></td>
+          <td><%= bovino.pelagem %></td>
+          <td><%= bovino.sexo %></td>
+          <td><%= l bovino.data_nascimento %></td>
+          <td>
+            <%= link_to 'Remover', [rebanho, bovino], method: :delete, data: { confirm: 'Tem certeza?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-info">
+    <p>
+      Nenhum bovino encontrado.
+      <%= link_to 'Adicione um novo bovino a este rebanho.', rebanho_bovinos_path(rebanho), class: 'alert-link' %>
+    </p>
+  </div>
+<% end %>

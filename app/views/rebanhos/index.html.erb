@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h1>
+    Lista de Rebanhos
+    <%= link_to 'Novo Rebanho', new_rebanho_path, class: 'btn btn-primary pull-right' %>
+  </h1>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Qtde Bovinos</th>
+      <th class="col-xs-3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rebanhos.each do |rebanho| %>
+      <tr>
+        <td><%= rebanho.nome %></td>
+        <td><%= rebanho.bovinos.size %></td>
+        <td>
+          <%= link_to 'Editar', edit_rebanho_path(rebanho) %> |
+          <%= link_to 'Remover', rebanho, method: :delete, data: { confirm: 'Tem certeza?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

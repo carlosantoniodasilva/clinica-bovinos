@@ -1,0 +1,2 @@
+module RebanhosHelper
+end
