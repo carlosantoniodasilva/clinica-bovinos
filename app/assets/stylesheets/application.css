@@ -22,6 +22,11 @@ body {
   margin-top: 0;
 }
 
+.home-background {
+  display: block;
+  margin: 40px auto 0;
+}
+
 @media print {
   body {
     padding-top: 0;
