@@ -5,32 +5,41 @@
   </h1>
 </div>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Número</th>
-      <th>Nome</th>
-      <th>Raça</th>
-      <th>Pelagem</th>
-      <th>Sexo</th>
-      <th>Nascimento</th>
-      <th class="col-xs-2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @bovinos.each do |bovino| %>
+<% if @bovinos.present? %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= bovino.numero %></td>
-        <td><%= bovino.nome %></td>
-        <td><%= bovino.raca %></td>
-        <td><%= bovino.pelagem %></td>
-        <td><%= bovino.sexo %></td>
-        <td><%= l bovino.data_nascimento %></td>
-        <td>
-          <%= link_to 'Adicionar', rebanho_bovinos_path(id: bovino), method: :post, data: { confirm: 'Confirma?' } %>
-        </td>
+        <th>Número</th>
+        <th>Nome</th>
+        <th>Raça</th>
+        <th>Pelagem</th>
+        <th>Sexo</th>
+        <th>Nascimento</th>
+        <th class="col-xs-2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @bovinos.each do |bovino| %>
+        <tr>
+          <td><%= bovino.numero %></td>
+          <td><%= bovino.nome %></td>
+          <td><%= bovino.raca %></td>
+          <td><%= bovino.pelagem %></td>
+          <td><%= bovino.sexo %></td>
+          <td><%= l bovino.data_nascimento %></td>
+          <td>
+            <%= link_to 'Adicionar', rebanho_bovinos_path(id: bovino), method: :post, data: { confirm: 'Confirma?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="alert alert-info">
+    <p>
+      Não há mais bovinos para adicionar ao Rebanho <%= @rebanho.nome %>.
+      <%= link_to 'Voltar para o rebanho', edit_rebanho_path(@rebanho), class: 'alert-link' %>.
+    </p>
+  </div>
+<% end %>
