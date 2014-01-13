@@ -40,6 +40,7 @@ class Bovino < ActiveRecord::Base
   end
 
   belongs_to :fazenda
+  has_many :inseminacoes, dependent: :restrict_with_exception
 
   validates_presence_of :fazenda_id, :numero, :nome, :pelagem, :raca, :sexo, :data_nascimento
   validates_inclusion_of :pelagem, in: PELAGENS, allow_blank: true
